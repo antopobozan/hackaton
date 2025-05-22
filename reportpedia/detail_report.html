@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail Report - Report Pedia</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container" style="max-width:700px;margin:40px auto 0 auto;">
+        <div class="header-search-wrapper" style="margin-bottom:24px;background:none;box-shadow:none;padding-bottom:0;">
+            <header style="background:none;box-shadow:none;border-radius:0;padding:0;margin-bottom:0;">
+                <h1 id="reportTitle" style="font-size:1.3rem;margin:0 0 1.2rem 0;font-weight:600;color:#2d3a4a;letter-spacing:1px;text-align:left;background:none;">Cetak NamaReport</h1>
+            </header>
+        </div>
+        <form class="report-detail-form" style="background:#fff;border-radius:14px;box-shadow:0 2px 12px rgba(44,62,80,0.07);padding:32px 24px 24px 24px;">
+            <div style="display:flex;flex-wrap:wrap;gap:24px 32px;align-items:center;">
+                <div style="flex:1 1 260px;min-width:220px;">
+                    <label for="jenisLaporan" style="font-weight:600;display:block;margin-bottom:6px;">Jenis Laporan</label>
+                    <select id="jenisLaporan" name="jenisLaporan" style="width:100%;padding:8px 12px;border-radius:8px;border:1px solid #b3c6e6;font-size:1rem;">
+                        <option>WRR2011 - Laporan Daftar Piutang Iuran</option>
+                        <!-- Tambahkan opsi lain jika perlu -->
+                    </select>
+                </div>
+                <div style="flex:1 1 180px;min-width:160px;">
+                    <label for="periode" style="font-weight:600;display:block;margin-bottom:6px;">Periode *</label>
+                    <input type="date" id="periode" name="periode" value="2025-05-22" style="width:100%;padding:8px 12px;border-radius:8px;border:1px solid #b3c6e6;font-size:1rem;">
+                </div>
+            </div>
+            <div style="display:flex;flex-wrap:wrap;gap:24px 32px;align-items:center;margin-top:18px;">
+                <div style="flex:1 1 260px;min-width:220px;">
+                    <label for="kantor" style="font-weight:600;display:block;margin-bottom:6px;">Kantor *</label>
+                    <div style="display:flex;align-items:center;gap:8px;">
+                        <input type="text" id="kantor" name="kantor" value="J0P" readonly style="width:60px;padding:8px 8px;border-radius:8px 0 0 8px;border:1px solid #b3c6e6;font-size:1rem;background:#e6eaf0;">
+                        <input type="text" value="GRHA BPJAMSOSTEK" readonly style="flex:1;padding:8px 12px;border-radius:0 8px 8px 0;border:1px solid #b3c6e6;border-left:none;font-size:1rem;background:#e6eaf0;">
+                        <span title="Info" style="display:inline-block;width:22px;height:22px;background:#e0eafc;border-radius:50%;text-align:center;line-height:22px;color:#3bb2f6;font-weight:bold;font-size:1.1rem;cursor:pointer;">?</span>
+                    </div>
+                </div>
+                <div style="flex:1 1 180px;min-width:160px;display:flex;align-items:center;gap:8px;margin-top:24px;">
+                    <input type="checkbox" id="showParam" name="showParam" style="width:18px;height:18px;">
+                    <label for="showParam" style="font-weight:600;">Show Parameter</label>
+                </div>
+            </div>
+            <div style="display:flex;gap:18px;margin-top:32px;justify-content:flex-start;">
+                <button type="button" style="background:#3bb2f6;color:#fff;font-weight:700;border:none;border-radius:8px;padding:10px 28px;font-size:1rem;box-shadow:0 2px 8px rgba(44,62,80,0.10);cursor:pointer;">CETAK LAPORAN</button>
+                <button type="button" style="background:#3bb2f6;color:#fff;font-weight:700;border:none;border-radius:8px;padding:10px 28px;font-size:1rem;box-shadow:0 2px 8px rgba(44,62,80,0.10);cursor:pointer;">CETAK LAPORAN EXCEL</button>
+            </div>
+        </form>
+    </div>
+    <script>
+    // Ambil nama report dari query string dan tampilkan di judul
+    function getQueryParam(param) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(param);
+    }
+    const reportName = getQueryParam('report');
+    if (reportName) {
+        document.getElementById('reportTitle').textContent = 'Cetak ' + reportName;
+    }
+    </script>
+</body>
+</html>
